@@ -1631,10 +1631,13 @@
                 navControls.classList.remove('idle-hidden');
                 clearTimeout(idleTimeout);
                 idleTimeout = setTimeout(() => {
-                    navControls.classList.add('idle-hidden');
-                }, 3000);
+                    if (!navControls.matches(':hover')) {
+                        navControls.classList.add('idle-hidden');
+                    }
+                }, 1000); 
             }
         }
+
 
         // Listen for activity
         document.addEventListener('mousemove', resetIdleTimer);
